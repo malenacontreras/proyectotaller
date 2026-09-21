@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatchPoint | Torneos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span>MatchPoint</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="torneos.html" class="active">Torneos</a>
+      <a href="organizar.html">Organizar torneo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-shell">
+      <div class="page-head">
+        <div class="eyebrow">Calendario abierto</div>
+        <h1 class="page-title">Torneos</h1>
+        <p class="page-subtitle">Explorá los torneos publicados y consultá sus participantes, partidos y resultados.</p>
+      </div>
+      
+      <div class="filter-bar">
+        <input class="search" id="search" placeholder="Buscar torneo..." aria-label="Buscar torneo">
+        <select><option>Fecha</option><option>Más próximos</option></select>
+        <select><option>Nivel</option><option>Principiante</option><option>Intermedio</option><option>Avanzado</option></select>
+        <select><option>Ubicación</option><option>Córdoba</option><option>Buenos Aires</option></select>
+      </div>
+
+      <div class="cards-grid" id="tournament-grid">
+        <article class="tournament-card" data-name="copa verano">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Copa Verano</h3>
+            <div class="meta"><span>15 - 16 Feb</span><span>Córdoba</span><span>16 jugadores</span></div>
+            <span class="level">Intermedio</span>
+          </div>
+        </article>
+        <article class="tournament-card" data-name="liga friends">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Liga Friends</h3>
+            <div class="meta"><span>22 - 24 Feb</span><span>Buenos Aires</span><span>12 jugadores</span></div>
+            <span class="level">Todos los niveles</span>
+          </div>
+        </article>
+        <article class="tournament-card" data-name="torneo nocturno">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Torneo Nocturno</h3>
+            <div class="meta"><span>1 - 2 Mar</span><span>Córdoba</span><span>8 jugadores</span></div>
+            <span class="level">Avanzado</span>
+          </div>
+        </article>
+        <article class="tournament-card" data-name="desafío equipos">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Desafío Equipos</h3>
+            <div class="meta"><span>8 - 9 Mar</span><span>Rosario</span><span>12 jugadores</span></div>
+            <span class="level">Intermedio</span>
+          </div>
+        </article>
+        <article class="tournament-card" data-name="summer cup">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1526232761682-d26e2acb8459?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Summer Cup</h3>
+            <div class="meta"><span>14 - 16 Mar</span><span>Mar del Plata</span><span>16 jugadores</span></div>
+            <span class="level">Todos los niveles</span>
+          </div>
+        </article>
+        <article class="tournament-card" data-name="ciudad open">
+          <div class="card-image" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=900&q=80')"></div>
+          <div class="card-body">
+            <h3>Ciudad Open</h3>
+            <div class="meta"><span>21 - 23 Mar</span><span>Santa Fe</span><span>10 jugadores</span></div>
+            <span class="level">Intermedio</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="pagination">
+        <span>‹</span><span class="current">1</span><span>2</span><span>3</span><span>…</span><span>›</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">M</span>
+        <span>MatchPoint</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </div>
+      <span>© 2026 MatchPoint</span>
+    </div>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>

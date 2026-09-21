@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MatchPoint | Organizar Torneo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <span>MatchPoint</span>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="torneos.html">Torneos</a>
+      <a href="organizar.html" class="active">Organizar torneo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-shell">
+      <div class="page-head">
+        <div class="eyebrow">Nuevo torneo</div>
+        <h1 class="page-title">Organizá tu torneo</h1>
+        <p class="page-subtitle">Cargá la información y los participantes para empezar a organizar los partidos.</p>
+      </div>
+      
+      <form class="form-card" id="tournament-form">
+        <section class="form-section">
+          <h2>Información del torneo</h2>
+          <div class="form-grid">
+            <div class="field full">
+              <label>Nombre del torneo</label>
+              <input id="name" placeholder="Copa de Verano" required>
+            </div>
+            <div class="field full">
+              <label>Descripción del torneo</label>
+              <textarea placeholder="Contanos de qué se trata el torneo..."></textarea>
+            </div>
+            <div class="field">
+              <label>Fecha de inicio</label>
+              <input type="date">
+            </div>
+            <div class="field">
+              <label>Fecha de finalización</label>
+              <input type="date">
+            </div>
+            <div class="field full">
+              <label>Ubicación</label>
+              <input placeholder="Club, ciudad o dirección">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Formato del torneo</h2>
+          <div class="choice-grid">
+            <div class="choice selected">Eliminación directa</div>
+            <div class="choice">Todos contra todos</div>
+            <div class="choice">Fase de grupos + eliminación</div>
+          </div>
+          <div class="field" style="margin-top:18px">
+            <label>Nivel</label>
+            <select>
+              <option>Principiante</option>
+              <option selected>Intermedio</option>
+              <option>Avanzado</option>
+              <option>Todos los niveles</option>
+            </select>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Participantes</h2>
+          <p class="page-subtitle" style="margin-bottom:18px">Agregá los jugadores o equipos que participarán del torneo.</p>
+          <div class="participants" id="participants">
+            <div class="field"><label>Participante 1</label><input placeholder="Nombre o equipo"></div>
+            <div class="field"><label>Participante 2</label><input placeholder="Nombre o equipo"></div>
+            <div class="field"><label>Participante 3</label><input placeholder="Nombre o equipo"></div>
+            <div class="field"><label>Participante 4</label><input placeholder="Nombre o equipo"></div>
+          </div>
+          <button class="button" type="button" id="add-participant" style="margin-top:18px;border:1px solid var(--line);background:#fff">+ Agregar participante</button>
+        </section>
+
+        <div class="summary">
+          <div><small>Nombre</small><strong id="summary-name">Sin definir</strong></div>
+          <div><small>Fecha</small><strong>Sin definir</strong></div>
+          <div><small>Formato</small><strong>Eliminación directa</strong></div>
+          <div><small>Participantes</small><strong id="summary-count">4 cargados</strong></div>
+        </div>
+        
+        <button class="button primary" type="submit" style="width:100%">Crear torneo</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">M</span>
+        <span>MatchPoint</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </div>
+      <span>© 2026 MatchPoint</span>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
