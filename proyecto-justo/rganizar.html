@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="MatchPoint">
+  <meta name="description" content="Organizá tu torneo de pádel en MatchPoint: cargá los participantes, jugá los cruces en el momento y descubrí al campeón.">
+  <meta name="keywords" content="padel, organizar torneo, cruces, fixture, participantes, resultados">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>">
+  <title>MatchPoint | Organizar Torneo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="calcularPartidos()">
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <h1>MatchPoint</h1>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="torneos.html">Torneos</a>
+      <a href="organizar.html" class="active">Organizar torneo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-shell">
+      <div class="page-head">
+        <div class="eyebrow">Nuevo torneo</div>
+        <h2 class="page-title">Organizá tu torneo</h2>
+        <p class="page-subtitle">Sin planillas ni esperas: cargá los participantes y jugá los cruces ahora mismo, en el momento.</p>
+      </div>
+
+      <form class="form-card" id="form-torneo" onsubmit="crearTorneo(event)">
+        <section class="form-section">
+          <h2>Información del torneo</h2>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="nombre-torneo">Nombre del torneo</label>
+              <input id="nombre-torneo" placeholder="Copa de Verano" maxlength="40" size="30" required
+                     oninput="actualizarResumen(event)" onblur="validarNombre(this)">
+            </div>
+            <div class="field full">
+              <label for="descripcion">Descripción del torneo</label>
+              <textarea id="descripcion" placeholder="Contanos de qué se trata el torneo..." maxlength="200"></textarea>
+            </div>
+            <div class="field full">
+              <label for="ubicacion">¿Dónde juegan?</label>
+              <input id="ubicacion" placeholder="Club, cancha de barrio, quincho..." maxlength="60" size="40">
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Formato del torneo</h2>
+          <div class="choice-grid">
+            <div class="choice selected" onclick="seleccionarFormato(this)">Eliminación directa</div>
+            <div class="choice" onclick="seleccionarFormato(this)">Todos contra todos</div>
+            <div class="choice" onclick="seleccionarFormato(this)">Fase de grupos + eliminación</div>
+          </div>
+          <div class="field field-nivel">
+            <label for="nivel">Nivel</label>
+            <select id="nivel">
+              <option>Principiante</option>
+              <option selected>Intermedio</option>
+              <option>Avanzado</option>
+              <option>Todos los niveles</option>
+            </select>
+          </div>
+        </section>
+
+<section class="form-section">
+          <h2>Duplas</h2>
+          <p class="page-subtitle section-intro">Agregá las duplas que participarán del torneo (mínimo 4).</p>
+          <div class="participants" id="participantes">
+            <div class="field"><label for="participante-1">Dupla 1</label><input id="participante-1" placeholder="Nombre del equipo" maxlength="24" size="20"></div>
+            <div class="field"><label for="participante-2">Dupla 2</label><input id="participante-2" placeholder="Nombre del equipo" maxlength="24" size="20"></div>
+            <div class="field"><label for="participante-3">Dupla 3</label><input id="participante-3" placeholder="Nombre del equipo" maxlength="24" size="20"></div>
+            <div class="field"><label for="participante-4">Dupla 4</label><input id="participante-4" placeholder="Nombre del equipo" maxlength="24" size="20"></div>
+          </div>
+          <button class="button btn-add" type="button" onclick="agregarParticipante()">+ Agregar dupla</button>
+        </section>
+
+        <div class="summary">
+          <div><small>Nombre</small><strong id="resumen-nombre">Sin definir</strong></div>
+          <div><small>Formato</small><strong id="resumen-formato">Eliminación directa</strong></div>
+          <div><small>Participantes</small><strong id="resumen-participantes">4 cargados</strong></div>
+          <div><small>Partidos</small><strong id="resumen-partidos">3 partidos</strong></div>
+        </div>
+
+        <button class="button primary btn-submit" type="submit">Crear torneo</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">M</span>
+        <span>MatchPoint</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </div>
+      <span>© 2026 MatchPoint</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
