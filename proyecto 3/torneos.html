@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="MatchPoint">
+  <meta name="description" content="Explorá los torneos de pádel publicados en MatchPoint y consultá fechas, ubicación y nivel de cada uno.">
+  <meta name="keywords" content="padel, torneos, torneos de padel, calendario, fixture">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>">
+  <title>MatchPoint | Torneos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <h1>MatchPoint</h1>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="torneos.html" class="active">Torneos</a>
+      <a href="organizar.html">Organizar torneo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-shell">
+      <div class="page-head">
+        <div class="eyebrow">Calendario abierto</div>
+        <h2 class="page-title">Torneos</h2>
+        <p class="page-subtitle">Explorá los torneos publicados y hacé click en uno para ver sus detalles.</p>
+      </div>
+
+      <div class="filter-bar">
+        <label class="visually-hidden" for="buscador">Buscar torneo</label>
+        <input class="search" id="buscador" placeholder="Buscar torneo..." oninput="aplicarFiltros()">
+
+        <label class="visually-hidden" for="filtro-fecha">Ordenar por fecha</label>
+        <select id="filtro-fecha" onchange="aplicarFiltros()"><option>Fecha</option><option>Más próximos</option></select>
+
+        <label class="visually-hidden" for="filtro-nivel">Filtrar por nivel</label>
+        <select id="filtro-nivel" onchange="aplicarFiltros()"><option>Nivel</option><option>Principiante</option><option>Intermedio</option><option>Avanzado</option></select>
+
+        <label class="visually-hidden" for="filtro-ubicacion">Filtrar por ubicación</label>
+        <select id="filtro-ubicacion" onchange="aplicarFiltros()">
+          <option>Ubicación</option>
+          <option>Córdoba</option>
+          <option>Buenos Aires</option>
+          <option>Rosario</option>
+          <option>Mar del Plata</option>
+          <option>Santa Fe</option>
+        </select>
+      </div>
+
+      <div class="cards-grid" id="tournament-grid">
+        <article class="tournament-card" data-orden="1" data-title="Copa Verano" data-nivel="Intermedio"
+                  data-fecha="15 - 16 Feb" data-ubicacion="Córdoba" data-jugadores="16 jugadores"
+                  data-desc="Torneo de eliminación directa para parejas de nivel intermedio, a disputarse en canchas cubiertas."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1658491830143-72808ca237e3?auto=format&fit=crop&w=900&q=80" alt="Cancha de pádel con red, lista para jugar">
+          <div class="card-body">
+            <h3>Copa Verano</h3>
+            <div class="meta-list">
+              <span class="meta-item">15 - 16 Feb</span>
+              <span class="meta-item">Córdoba</span>
+              <span class="meta-item">16 jugadores</span>
+            </div>
+            <span class="level level-blue">Intermedio</span>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-orden="2" data-title="Liga Friends" data-nivel="Todos los niveles"
+                  data-fecha="22 - 24 Feb" data-ubicacion="Buenos Aires" data-jugadores="12 jugadores"
+                  data-desc="Liga informal abierta a todos los niveles, pensada para juntar amigos y sumar partidos."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1646649851780-d9701b7c3c04?auto=format&fit=crop&w=900&q=80" alt="Pareja festejando un punto durante un partido de pádel">
+          <div class="card-body">
+            <h3>Liga Friends</h3>
+            <div class="meta-list">
+              <span class="meta-item">22 - 24 Feb</span>
+              <span class="meta-item">Buenos Aires</span>
+              <span class="meta-item">12 jugadores</span>
+            </div>
+            <span class="level level-green">Todos los niveles</span>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-orden="3" data-title="Torneo Nocturno" data-nivel="Avanzado"
+                  data-fecha="1 - 2 Mar" data-ubicacion="Córdoba" data-jugadores="8 jugadores"
+                  data-desc="Cruces nocturnos para jugadores avanzados, con partidos a mejor de tres sets."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1657704227277-04e8accd079e?auto=format&fit=crop&w=900&q=80" alt="Pelota de pádel apoyada sobre la cancha">
+          <div class="card-body">
+            <h3>Torneo Nocturno</h3>
+            <div class="meta-list">
+              <span class="meta-item">1 - 2 Mar</span>
+              <span class="meta-item">Córdoba</span>
+              <span class="meta-item">8 jugadores</span>
+            </div>
+            <span class="level level-orange">Avanzado</span>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-orden="4" data-title="Desafío Equipos" data-nivel="Intermedio"
+                  data-fecha="8 - 9 Mar" data-ubicacion="Rosario" data-jugadores="12 jugadores"
+                  data-desc="Torneo por equipos de tres parejas, pensado para clubes que quieran competir entre sí."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1658491830143-72808ca237e3?auto=format&fit=crop&w=900&q=80" alt="Cancha de pádel vista desde arriba">
+          <div class="card-body">
+            <h3>Desafío Equipos</h3>
+            <div class="meta-list">
+              <span class="meta-item">8 - 9 Mar</span>
+              <span class="meta-item">Rosario</span>
+              <span class="meta-item">12 jugadores</span>
+            </div>
+            <span class="level level-blue">Intermedio</span>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-orden="5" data-title="Summer Cup" data-nivel="Todos los niveles"
+                  data-fecha="14 - 16 Mar" data-ubicacion="Mar del Plata" data-jugadores="16 jugadores"
+                  data-desc="Torneo de verano en la costa, abierto a todos los niveles y con premios para los finalistas."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1646649851780-d9701b7c3c04?auto=format&fit=crop&w=900&q=80" alt="Jugadores de pádel celebrando en la cancha">
+          <div class="card-body">
+            <h3>Summer Cup</h3>
+            <div class="meta-list">
+              <span class="meta-item">14 - 16 Mar</span>
+              <span class="meta-item">Mar del Plata</span>
+              <span class="meta-item">16 jugadores</span>
+            </div>
+            <span class="level level-green">Todos los niveles</span>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-orden="6" data-title="Ciudad Open" data-nivel="Intermedio"
+                  data-fecha="21 - 23 Mar" data-ubicacion="Santa Fe" data-jugadores="10 jugadores"
+                  data-desc="Clásico torneo abierto de la ciudad, con cruces de eliminación directa a un set."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1657704227277-04e8accd079e?auto=format&fit=crop&w=900&q=80" alt="Detalle de una pelota de pádel">
+          <div class="card-body">
+            <h3>Ciudad Open</h3>
+            <div class="meta-list">
+              <span class="meta-item">21 - 23 Mar</span>
+              <span class="meta-item">Santa Fe</span>
+              <span class="meta-item">10 jugadores</span>
+            </div>
+            <span class="level level-blue">Intermedio</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="pagination">
+        <span>‹</span><span class="current">1</span><span>2</span><span>3</span><span>…</span><span>›</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">M</span>
+        <span>MatchPoint</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </div>
+      <span>© 2026 MatchPoint</span>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="cerrarDetalle()" aria-label="Cerrar detalle">✕</button>
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-body">
+        <span class="level" id="modal-nivel"></span>
+        <h2 id="modal-nombre"></h2>
+        <p id="modal-desc"></p>
+        <div class="meta-list">
+          <span class="meta-item">📅 <span id="modal-fecha"></span></span>
+          <span class="meta-item">📍 <span id="modal-ubicacion"></span></span>
+          <span class="meta-item">👥 <span id="modal-jugadores"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

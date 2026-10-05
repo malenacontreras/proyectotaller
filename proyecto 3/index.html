@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="MatchPoint">
+  <meta name="description" content="MatchPoint, la forma simple de organizar torneos de pádel entre amigos: participantes, cruces y resultados en un solo lugar.">
+  <meta name="keywords" content="padel, torneos, torneos de padel, organizar torneo, cruces, fixture">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>">
+  <title>MatchPoint | Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">M</span>
+      <h1>MatchPoint</h1>
+    </a>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="index.html" class="active">Inicio</a>
+      <a href="torneos.html">Torneos</a>
+      <a href="organizar.html">Organizar torneo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">Torneos entre amigos</div>
+        <h2>Tu <em>torneo.</em><br>A tu manera.</h2>
+        <p>Organizá torneos de pádel entre amigos, armá los cruces y seguí cada resultado desde un solo lugar.</p>
+        <div class="actions">
+          <a class="button primary" href="organizar.html">Organizar torneo</a>
+          <a class="button outline" href="torneos.html">Ver torneos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <h2>Todo lo que necesitás para tu torneo</h2>
+        <p>Una forma simple de tener cada detalle organizado y a la vista.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <div class="feature-icon">01</div>
+          <h3>Organizá</h3>
+          <p>Creá tu torneo, cargá los participantes y definí toda la información necesaria.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">02</div>
+          <h3>Armá los cruces</h3>
+          <p>Visualizá de forma clara los enfrentamientos y la estructura del torneo.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">03</div>
+          <h3>Seguí los resultados</h3>
+          <p>Consultá partidos, resultados, clasificaciones y al ganador del torneo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section mist">
+      <div class="section-header-row">
+        <div>
+          <h2>Torneos destacados</h2>
+          <p>Los más populares del momento. Hacé click en uno para ver el detalle.</p>
+        </div>
+        <a class="text-link-right" href="torneos.html">Ver todos los torneos →</a>
+      </div>
+
+      <div class="cards-grid">
+        <article class="tournament-card" data-title="Copa Verano" data-nivel="Intermedio"
+                  data-fecha="15 - 16 Feb" data-ubicacion="Córdoba" data-jugadores="16 jugadores"
+                  data-desc="Torneo de eliminación directa para parejas de nivel intermedio, a disputarse en canchas cubiertas."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1658491830143-72808ca237e3?auto=format&fit=crop&w=900&q=80" alt="Cancha de pádel con red, lista para jugar">
+          <div class="card-body">
+            <div class="card-header">
+              <h3>Copa Verano</h3>
+              <span class="level level-blue">Intermedio</span>
+            </div>
+            <div class="meta-list">
+              <span class="meta-item">📅 15 - 16 Feb</span>
+              <span class="meta-item">📍 Córdoba</span>
+              <span class="meta-item">👥 16 jugadores</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-title="Liga Friends" data-nivel="Todos los niveles"
+                  data-fecha="22 - 24 Feb" data-ubicacion="Buenos Aires" data-jugadores="12 jugadores"
+                  data-desc="Liga informal abierta a todos los niveles, pensada para juntar amigos y sumar partidos."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1646649851780-d9701b7c3c04?auto=format&fit=crop&w=900&q=80" alt="Pareja festejando un punto durante un partido de pádel">
+          <div class="card-body">
+            <div class="card-header">
+              <h3>Liga Friends</h3>
+              <span class="level level-green">Todos los niveles</span>
+            </div>
+            <div class="meta-list">
+              <span class="meta-item">📅 22 - 24 Feb</span>
+              <span class="meta-item">📍 Buenos Aires</span>
+              <span class="meta-item">👥 12 jugadores</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="tournament-card" data-title="Torneo Nocturno" data-nivel="Avanzado"
+                  data-fecha="1 - 2 Mar" data-ubicacion="Córdoba" data-jugadores="8 jugadores"
+                  data-desc="Cruces nocturnos para jugadores avanzados, con partidos a mejor de tres sets."
+                  onclick="mostrarDetalle(this)">
+          <img class="card-image" src="https://images.unsplash.com/photo-1657704227277-04e8accd079e?auto=format&fit=crop&w=900&q=80" alt="Pelota de pádel apoyada sobre la cancha">
+          <div class="card-body">
+            <div class="card-header">
+              <h3>Torneo Nocturno</h3>
+              <span class="level level-orange">Avanzado</span>
+            </div>
+            <div class="meta-list">
+              <span class="meta-item">📅 1 - 2 Mar</span>
+              <span class="meta-item">📍 Córdoba</span>
+              <span class="meta-item">👥 8 jugadores</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about">
+        <div class="about-visual" aria-hidden="true">🏆</div>
+        <div>
+          <div class="eyebrow">Nuestra historia</div>
+          <h2>Sobre MatchPoint</h2>
+          <p>MatchPoint nace para hacer más simple la organización de torneos de pádel entre amigos. Desde un solo lugar podés organizar participantes, cruces, partidos y resultados.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">M</span>
+        <span>MatchPoint</span>
+      </a>
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </div>
+      <span>© 2026 MatchPoint</span>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="cerrarDetalle()" aria-label="Cerrar detalle">✕</button>
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-body">
+        <span class="level" id="modal-nivel"></span>
+        <h2 id="modal-nombre"></h2>
+        <p id="modal-desc"></p>
+        <div class="meta-list">
+          <span class="meta-item">📅 <span id="modal-fecha"></span></span>
+          <span class="meta-item">📍 <span id="modal-ubicacion"></span></span>
+          <span class="meta-item">👥 <span id="modal-jugadores"></span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
