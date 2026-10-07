@@ -1,0 +1,681 @@
+:root {
+  --bg: #f4f6f2;
+  --card: #ffffff;
+  --ink: #0c1b16;
+  --mut: #68736e;
+  --ball: #93dd00;
+  --focus: #2e4400;
+  --line: #e1e6e1;
+  --bad: #e63946;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.5 Inter, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   HEADER Y NAVEGACIÓN
+   ========================================= */
+.site-header {
+  height: 84px;
+  background: var(--ink);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6.5%;
+  position: fixed; /* <-- Cambiado a fixed para que quede fijo */
+  top: 0;
+  left: 0;         /* <-- Lo pega al borde izquierdo de la pantalla */
+  width: 100%;     /* <-- Fuerza a que ocupe todo el ancho */
+  z-index: 100;    /* <-- Nos aseguramos de que tape todo lo que scrollea por abajo */
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: -.04em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand h1 {
+  margin: 0;
+  font: inherit;
+  color: #fff;
+}
+
+.brand-mark img{
+  display: grid;
+  place-items: center;
+  width: 50px;
+}
+
+.main-nav {
+  display: flex;
+  gap: 36px;
+  height: 100%;
+  align-items: center;
+}
+
+.main-nav a {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  color: #b8c2bc;
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-nav a.active,
+.main-nav a:hover {
+  color: #fff;
+}
+
+.main-nav a.active:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ball);
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+.wrap {
+  max-width: 1000px;
+  margin: auto;
+  /* El padding top se cambia a 108px (84px del header + 24px de margen) 
+     para que el contenido no quede escondido debajo del header fijo */
+  padding: 108px 18px 24px; 
+  flex: 1;
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  letter-spacing: -.04em;
+  font-weight: 800;
+}
+
+h1 span {
+  color: var(--ball);
+}
+
+.sub {
+  color: var(--mut);
+  font-size: .9rem;
+}
+
+.mt { margin-top: 12px; }
+.mts { margin-top: 4px; }
+
+a {
+  color: var(--ball);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* =========================================
+   TARJETAS Y FORMULARIOS
+   ========================================= */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(12, 27, 22, 0.03);
+}
+
+.card h2,
+.card h3 {
+  margin-top: 0;
+  letter-spacing: -.03em;
+  color: var(--ink);
+}
+
+.court {
+  background: white;
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.court:before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.court h2 { color: #161515; }
+.court .sub { color: #b8c2bc; }
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 16px 0 8px;
+}
+
+label.check {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: .9rem;
+  font-weight: 400;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 13px 14px;
+  font: inherit;
+  outline: 0;
+  transition: .2s;
+}
+
+input[type=checkbox] {
+  width: auto;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--focus);
+}
+
+input:disabled {
+  opacity: .6;
+  background: var(--bg);
+}
+
+/* =========================================
+   BOTONES
+   ========================================= */
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font: 700 .95rem Inter, Arial, sans-serif;
+  background: var(--ball);
+  color: var(--ink);
+  transition: .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:hover:not(:disabled) {
+  background: #d9ff83;
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+button.ghost {
+  color: white;
+}
+
+button.ghost:hover:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+
+button.big {
+  font-size: 1.05rem;
+  width: 100%;
+  padding: 16px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.row.between {
+  justify-content: space-between;
+}
+
+.row.flexwrap {
+  flex-wrap: wrap;
+}
+
+/* =========================================
+   CHIPS Y TIPOS DE TORNEO
+   ========================================= */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.chip {
+  background: #edf7d8;
+  color: #4d681c;
+  border-radius: 999px;
+  padding: 6px 9px 6px 14px;
+  font-size: .85rem;
+  font-weight: 600;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.chip b {
+  cursor: pointer;
+  background: #fff;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  border: 1px solid #dcebba;
+}
+
+.types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.type {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  background: #fff;
+  transition: .2s;
+}
+
+.type.sel {
+  border-color: var(--focus);
+  background: #f0f9db;
+}
+
+.type h4 { margin: 0 0 6px; color: var(--ink); font-size: 15px; }
+.type p { margin: 0; color: var(--mut); font-size: .85rem; line-height: 1.4; }
+
+iframe {
+  width: 100%;
+  height: 260px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-top: 12px;
+  background: var(--bg);
+}
+
+.err {
+  color: var(--bad);
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   PESTAÑAS Y BARRA DE PROGRESO
+   ========================================= */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 20px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  background: #fff;
+  color: var(--mut);
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.tabs button:hover:not(.on) {
+  background: var(--bg);
+  transform: none;
+}
+
+.tabs button.on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.bar {
+  height: 8px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+  background: var(--ball);
+  width: 0;
+  transition: width 0.3s ease;
+}
+
+/* =========================================
+   PARTIDOS
+   ========================================= */
+.m {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  border: 1px solid var(--line);
+  transition: .2s;
+}
+
+.m.done {
+  border-color: var(--focus);
+  background: #f7fcee;
+}
+
+.m small {
+  color: var(--mut);
+  display: block;
+  margin-bottom: 10px;
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.tr, .hd {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  gap: 12px;
+  align-items: center;
+}
+
+.hd {
+  font-size: .75rem;
+  color: var(--mut);
+  text-align: center;
+  font-weight: 700;
+}
+
+.tr { padding: 5px 0; }
+.tr .n {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tr input.sc {
+  text-align: center;
+  padding: 8px 4px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.m small.hint {
+  color: var(--bad);
+  margin: 10px 0 0;
+  text-transform: none;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.m .tr.w .n { color: var(--focus); font-weight: 800; }
+.m .tr.w .n:after { content: " 🏆"; }
+
+.bye {
+  color: var(--mut);
+  font-style: italic;
+  text-align: center;
+  font-size: .9rem;
+  background: var(--bg);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* =========================================
+   TABLAS Y CUADROS (BRACKET)
+   ========================================= */
+.tw {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+  background: #fff;
+  min-width: 500px;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  color: var(--mut);
+  font-size: .75rem;
+  text-transform: uppercase;
+  background: var(--bg);
+  font-weight: 700;
+}
+
+table tbody tr:last-child td { border-bottom: 0; }
+
+td.l, th.l { text-align: left; }
+
+tr.q td {
+  background: #f0f9db;
+  color: #4e6b15;
+  font-weight: 600;
+}
+tr.q td:first-child { box-shadow: inset 4px 0 var(--focus); }
+
+.bracket { display: flex; gap: 20px; overflow-x: auto; padding-bottom: 14px; }
+
+.col {
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.col h3 {
+  text-align: center;
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+/* =========================================
+   VISTA CAMPEÓN
+   ========================================= */
+.champ { text-align: center; padding: 44px 24px; }
+.champ.court {
+  background: var(--bg);
+  color: var(--ink);
+}
+.champ.court:before { display: none; }
+
+.champ .cup {
+  font-size: 4.5rem;
+  animation: pulse 1.6s ease-in-out infinite;
+  display: block;
+  margin-bottom: 12px;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.champ h2 { font-size: 2.2rem; margin: 6px 0 4px; color: var(--ink); }
+.champ .sub { color: var(--mut); }
+
+/* =========================================
+   ESTADÍSTICAS
+   ========================================= */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.stat {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  border: 1px solid var(--line);
+}
+
+.stat span {
+  color: var(--mut);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  font-weight: 700;
+}
+
+.stat b {
+  display: block;
+  font-size: 1.8rem;
+  margin-top: 6px;
+  color: var(--ink);
+}
+
+ul {
+  padding-left: 20px;
+  margin: 0;
+  color: var(--mut);
+  line-height: 1.8;
+  font-size: .95rem;
+}
+
+#cf {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.site-footer {
+  background: var(--ink);
+  padding: 34px 6.5%;
+  font-size: 12px;
+  color: #aebbb3;
+  margin-top: auto;
+  /* Truco CSS para que ocupe toda la pantalla aunque esté dentro de un contenedor chico */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-inner .brand {
+  color: #fff;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media(max-width:760px) {
+  .site-header {
+    padding: 0 20px;
+  }
+
+  .main-nav {
+    gap: 12px;
+  }
+
+  .main-nav a {
+    font-size: 11px;
+  }
+  
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media(max-width:700px) {
+  .types { grid-template-columns: 1fr; }
+  .tabs button { flex: 1; text-align: center; }
+  .wrap { padding: 18px 14px; }
+}
+
+@media(max-width:800px) {
+  .two { grid-template-columns: 1fr; }
+}
