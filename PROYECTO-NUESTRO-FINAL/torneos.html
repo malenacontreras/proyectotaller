@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="MatchPoint" />
+    <meta
+      name="description"
+      content="Explorá los torneos de pádel publicados en MatchPoint y consultá fechas, ubicación y nivel de cada uno."
+    />
+    <meta
+      name="keywords"
+      content="padel, torneos, torneos de padel, calendario, fixture"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎾</text></svg>"
+    />
+    <title>MatchPoint | Torneos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="torneo.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><img src="imagenes/logo.png" /></span>
+        <h1>MatchPoint</h1>
+      </a>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="index.html">Inicio</a>
+        <a href="torneos.html" class="active">Torneos</a>
+        <a href="organizar.html">Organizar torneo</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-shell">
+        <div class="page-head">
+          <div class="eyebrow">Calendario abierto</div>
+          <h2 class="page-title">Torneos</h2>
+          <p class="page-subtitle">
+            Explorá los torneos publicados y hacé click en uno para ver sus
+            detalles.
+          </p>
+        </div>
+
+        <div class="filter-bar">
+          <label class="visually-hidden" for="buscador">Buscar torneo</label>
+          <input
+            class="search"
+            id="buscador"
+            placeholder="Buscar torneo..."
+            oninput="aplicarFiltros()"
+          />
+
+          <label class="visually-hidden" for="filtro-fecha">
+            Filtrar por mes
+          </label>
+          <input type="month" id="filtro-fecha" onchange="aplicarFiltros()" />
+          <label class="visually-hidden" for="filtro-nivel"
+            >Filtrar por nivel</label
+          >
+          <select id="filtro-nivel" onchange="aplicarFiltros()">
+            <option value="Nivel" disabled selected hidden>Nivel</option>
+            <option value="Principiante">Principiante</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+
+          <label class="visually-hidden" for="filtro-ubicacion"
+            >Filtrar por ubicación</label
+          >
+          <select id="filtro-ubicacion" onchange="aplicarFiltros()">
+            <option>Ubicación</option>
+            <option>Córdoba</option>
+            <option>Buenos Aires</option>
+            <option>Rosario</option>
+            <option>Mar del Plata</option>
+            <option>Santa Fe</option>
+          </select>
+          <button type="button" class="btn-limpiar" onclick="limpiarFiltros()">
+            Limpiar
+          </button>
+        </div>
+
+        <div class="cards-grid" id="tournament-grid">
+          <p id="sin-resultados" class="sin-resultados hidden">
+            No se encontrarón torneos que coincidan con los filtros
+            seleccionados.
+          </p>
+          <article
+            class="tournament-card"
+            data-name="copa verano"
+            data-orden="1"
+            data-title="Copa Verano"
+            data-nivel="Intermedio"
+            data-fecha="15 - 16 Feb 2026"
+            data-mes="2026-02"
+            data-ubicacion="Córdoba"
+            data-jugadores="16 jugadores"
+            data-desc="Torneo de eliminación directa para parejas de nivel intermedio, a disputarse en canchas cubiertas."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/cancha_red.avif"
+              alt="Cancha de pádel con red"
+            />
+            <div class="card-body">
+              <h3>Copa Verano</h3>
+              <div class="meta-list">
+                <span class="meta-item">15 - 16 Feb 2026</span>
+                <span class="meta-item">Córdoba</span>
+                <span class="meta-item">16 jugadores</span>
+              </div>
+              <span class="level level-blue">Intermedio</span>
+            </div>
+          </article>
+
+          <article
+            class="tournament-card"
+            data-name="liga friends"
+            data-orden="2"
+            data-title="Liga Friends"
+            data-nivel="Todos los niveles"
+            data-fecha="22 - 24 Feb 2027"
+            data-mes="2027-02"
+            data-ubicacion="Buenos Aires"
+            data-jugadores="12 jugadores"
+            data-desc="Liga informal abierta a todos los niveles, pensada para juntar amigos y sumar partidos."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/paleta_partido.avif"
+              alt="Pareja festejando un punto durante un partido de pádel"
+            />
+            <div class="card-body">
+              <h3>Liga Friends</h3>
+              <div class="meta-list">
+                <span class="meta-item">22 - 24 Feb 2027</span>
+                <span class="meta-item">Buenos Aires</span>
+                <span class="meta-item">12 jugadores</span>
+              </div>
+              <span class="level level-green">Todos los niveles</span>
+            </div>
+          </article>
+
+          <article
+            class="tournament-card"
+            data-name="torneo nocturno"
+            data-orden="3"
+            data-title="Torneo Nocturno"
+            data-nivel="Avanzado"
+            data-fecha="1 - 2 Mar 2027"
+            data-mes="2027-03"
+            data-ubicacion="Córdoba"
+            data-jugadores="8 jugadores"
+            data-desc="Cruces nocturnos para jugadores avanzados, con partidos a mejor de tres sets."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/torneo_img_tapia_volea.jpeg"
+              alt="Jugador de padel voleando"
+            />
+            <div class="card-body">
+              <h3>Torneo Nocturno</h3>
+              <div class="meta-list">
+                <span class="meta-item">1 - 2 Mar 2027</span>
+                <span class="meta-item">Córdoba</span>
+                <span class="meta-item">8 jugadores</span>
+              </div>
+              <span class="level level-orange">Avanzado</span>
+            </div>
+          </article>
+
+          <article
+            class="tournament-card"
+            data-name="desafío equipos"
+            data-orden="4"
+            data-title="Desafío Equipos"
+            data-nivel="Intermedio"
+            data-fecha="8 - 9 Mar 2026"
+            data-mes="2026-03"
+            data-ubicacion="Rosario"
+            data-jugadores="12 jugadores"
+            data-desc="Torneo por equipos de tres parejas, pensado para clubes que quieran competir entre sí."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/torneos_partido.jpeg"
+              alt="Jugador jugando un partido"
+            />
+            <div class="card-body">
+              <h3>Desafío Equipos</h3>
+              <div class="meta-list">
+                <span class="meta-item">8 - 9 Mar 2026</span>
+                <span class="meta-item">Rosario</span>
+                <span class="meta-item">12 jugadores</span>
+              </div>
+              <span class="level level-blue">Intermedio</span>
+            </div>
+          </article>
+
+          <article
+            class="tournament-card"
+            data-name="summer cup"
+            data-orden="5"
+            data-title="Summer Cup"
+            data-nivel="Todos los niveles"
+            data-fecha="14 - 16 Dic 2026"
+            data-mes="2026-12"
+            data-ubicacion="Mar del Plata"
+            data-jugadores="16 jugadores"
+            data-desc="Torneo de verano en la costa, abierto a todos los niveles y con premios para los finalistas."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/pelota.jpeg"
+              alt="Pelota de padel"
+            />
+            <div class="card-body">
+              <h3>Summer Cup</h3>
+              <div class="meta-list">
+                <span class="meta-item">14 - 16 Dic 2026</span>
+                <span class="meta-item">Mar del Plata</span>
+                <span class="meta-item">16 jugadores</span>
+              </div>
+              <span class="level level-green">Todos los niveles</span>
+            </div>
+          </article>
+
+          <article
+            class="tournament-card"
+            data-name="ciudad open"
+            data-orden="6"
+            data-title="Ciudad Open"
+            data-nivel="Intermedio"
+            data-fecha="21 - 23 Nov 2026"
+            data-mes="2026-11"
+            data-ubicacion="Santa Fe"
+            data-jugadores="10 jugadores"
+            data-desc="Clásico torneo abierto de la ciudad, con cruces de eliminación directa a un set."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/torneos_jugador.jpeg"
+              alt="Detalle de una pelota de pádel"
+            />
+            <div class="card-body">
+              <h3>Ciudad Open</h3>
+              <div class="meta-list">
+                <span class="meta-item">21 - 23 Nov 2026</span>
+                <span class="meta-item">Santa Fe</span>
+                <span class="meta-item">10 jugadores</span>
+              </div>
+              <span class="level level-blue">Intermedio</span>
+            </div>
+          </article>
+          <!-- Torneo de Octubre -->
+          <article
+            class="tournament-card"
+            data-name="copa primavera"
+            data-orden="7"
+            data-title="Copa Primavera"
+            data-nivel="Intermedio"
+            data-fecha="17 - 18 Oct 2026"
+            data-mes="2026-10"
+            data-ubicacion="Córdoba"
+            data-jugadores="16 jugadores"
+            data-desc="Torneo de primavera para parejas de nivel intermedio, con cruces de eliminación directa."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/torneo_img_partido.jpg"
+              alt="Torneo imagen"
+            />
+
+            <div class="card-body">
+              <h3>Copa Primavera</h3>
+
+              <div class="meta-list">
+                <span class="meta-item">17 - 18 Oct 2026</span>
+                <span class="meta-item">Córdoba</span>
+                <span class="meta-item">16 jugadores</span>
+              </div>
+
+              <span class="level level-blue">Intermedio</span>
+            </div>
+          </article>
+
+          <!-- Torneo de Noviembre -->
+          <article
+            class="tournament-card"
+            data-name="matchpoint open"
+            data-orden="8"
+            data-title="MatchPoint Open"
+            data-nivel="Avanzado"
+            data-fecha="7 - 8 Nov 2026"
+            data-mes="2026-11"
+            data-ubicacion="Buenos Aires"
+            data-jugadores="12 jugadores"
+            data-desc="Torneo competitivo para parejas de nivel avanzado con eliminación directa y final."
+            onclick="mostrarDetalle(this)"
+          >
+            <img
+              class="card-image"
+              src="imagenes/pelota_cancha.avif"
+              alt="Pelota de pádel sobre la cancha"
+            />
+
+            <div class="card-body">
+              <h3>MatchPoint Open</h3>
+
+              <div class="meta-list">
+                <span class="meta-item">7 - 8 Nov 2026</span>
+                <span class="meta-item">Buenos Aires</span>
+                <span class="meta-item">12 jugadores</span>
+              </div>
+
+              <span class="level level-orange">Avanzado</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-links">
+          <a href="index.html">Inicio</a>
+          <a href="torneos.html">Torneos</a>
+          <a href="organizar.html">Organizar torneo</a>
+        </div>
+        <span>© 2026 MatchPoint</span>
+      </div>
+    </footer>
+
+    <div class="overlay" id="overlay">
+      <div class="modal">
+        <button
+          class="modal-close"
+          onclick="cerrarDetalle()"
+          aria-label="Cerrar detalle"
+        >
+          ✕
+        </button>
+        <img class="modal-img" id="modal-img" src="" alt="" />
+        <div class="modal-body">
+          <span class="level" id="modal-nivel"></span>
+          <h2 id="modal-nombre"></h2>
+          <p id="modal-desc"></p>
+          <div class="meta-list">
+            <span class="meta-item">📅 <span id="modal-fecha"></span></span>
+            <span class="meta-item">📍 <span id="modal-ubicacion"></span></span>
+            <span class="meta-item">👥 <span id="modal-jugadores"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="torneo.js"></script>
+  </body>
+</html>
